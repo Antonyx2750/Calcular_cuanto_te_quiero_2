@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculadora del amor ❤️</title>
+<style>
+:root{--pink:#ff4f87;--deep:#9b174f;--bg:#fff0f6}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:grid;place-items:center;padding:20px;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:radial-gradient(circle at top,#ffe0ed,var(--bg));color:#4c1630}
+.card{width:min(100%,440px);background:#fff;border:1px solid #ffd0e0;border-radius:28px;padding:28px;box-shadow:0 18px 55px #b72b5c20;text-align:center}
+.heart{font-size:52px;animation:pulse 1.3s infinite}
+h1{margin:8px 0;color:var(--deep);font-size:29px}
+p{color:#7a4960}
+input{width:100%;padding:14px;margin:7px 0;border:1px solid #f3b7ce;border-radius:14px;font-size:16px;outline-color:var(--pink)}
+button{width:100%;padding:15px;border:0;border-radius:14px;background:linear-gradient(90deg,#ff6094,#e83e78);color:white;font-weight:800;font-size:16px;margin-top:12px;cursor:pointer}
+#result{display:none;margin-top:20px;padding:18px;border-radius:18px;background:#fff0f6;text-align:left;line-height:1.6}
+.big{font-size:30px;color:var(--deep);font-weight:900;text-align:center}
+.small{font-size:12px;text-align:center;color:#9a6b80;margin-top:18px}
+@keyframes pulse{50%{transform:scale(1.12)}}
+</style>
+</head>
+<body>
+<main class="card">
+  <div class="heart">💘</div>
+  <h1>Calculadora del amor</h1>
+  <p>Una prueba científicamente nada seria, pero hecha con mucho cariño.</p>
+  <form id="loveForm">
+    <input id="name1" maxlength="35" placeholder="Tu nombre" required>
+    <input id="name2" maxlength="35" placeholder="El nombre de tu persona especial" required>
+    <button type="submit">Descubrir nuestro destino ❤️</button>
+  </form>
+  <section id="result" aria-live="polite"></section>
+  <div class="small">Resultados 100% de broma; el cariño real no se mide con porcentajes. ✨</div>
+</main>
+<script>
+const form=document.getElementById('loveForm');
+form.addEventListener('submit',function(e){
+  e.preventDefault();
+  const a=document.getElementById('name1').value.trim();
+  const b=document.getElementById('name2').value.trim();
+  if(!a||!b)return;
+  const result=document.getElementById('result');
+  result.style.display='block';
+  result.innerHTML='<div class="big">Compatibilidad: 100% 💞</div>'+
+    '<p>💌 Probabilidad de que '+escapeHTML(b)+' sea una persona especial para '+escapeHTML(a)+': <b>999999%</b></p>'+
+    '<p>💖 Probabilidad de que el cariño desaparezca: <b>ERROR 404 — no encontrado</b></p>'+
+    '<p style="text-align:center;font-size:18px"><b>Veredicto:</b><br>¡Aquí hay química de la buena! 🥹✨</p>';
+});
+function escapeHTML(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+</script>
+</body>
+</html>
